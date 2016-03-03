@@ -5,6 +5,8 @@ import Request from '../request';
 export default function(beginDate, endDate) {
   return new Promise(function(resolve, reject) {
     if (!endDate) endDate = moment();
+    if (typeof beginDate === 'string') beginDate = moment(beginDate);
+    if (typeof endDate === 'string') endDate = moment(endDate);
     new Request(
       'POST',
       'http://www.JOI.com/schemas/ViaSub.WMS/FindOrders',
