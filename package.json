@@ -13,8 +13,9 @@
     "babel-preset-stage-0": "^6.5.0"
   },
   "scripts": {
-    "build-docker": "docker build -t 3pl-central .",
-    "run-docker": "docker run -p 10101:10101 -it --rm --name 3pl-central -v \"$PWD\":/usr/src/app -w /usr/src/app 3pl-central",
+    "docker-build": "docker build -t smartio/3pl-central .",
+    "docker-run": "docker run -p 10101:10101 -it --rm --name 3pl-central -v \"$PWD\":/usr/src/app -w /usr/src/app smartio/3pl-central",
+    "docker-push": "docker push smartio/3pl-central",
     "serve": "./node_modules/.bin/babel-node src/seneca.js"
   }
 }
