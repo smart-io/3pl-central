@@ -45,11 +45,11 @@ class Request {
   replaceContentData(content, data) {
     data = {
       ...data,
-      ThreePLID: process.env.THREEPLID,
-      Login: process.env.LOGIN,
-      Password: process.env.PASSWORD,
-      CustomerID: process.env.CUSTOMERID,
-      FacilityID: process.env.FACILITYID
+      ThreePLID: process.env.THREEPL_ID,
+      Login: process.env.THREEPL_LOGIN,
+      Password: process.env.THREEPL_PASSWORD,
+      CustomerID: process.env.THREEPL_CUSTOMERID,
+      FacilityID: process.env.THREEPL_FACILITYID
     };
 
     for (let prop in data) {

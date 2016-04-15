@@ -1,5 +1,8 @@
-import { findOrders } from '../index';
+import dotenv from 'dotenv';
+import findOrders from './find-orders/server';
 import Seneca from 'seneca';
+
+dotenv.config();
 
 const seneca = Seneca({ timeout: 99999 });
 

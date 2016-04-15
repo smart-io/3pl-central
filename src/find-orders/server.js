@@ -10,7 +10,7 @@ export default function(beginDate, endDate) {
     new Request(
       'POST',
       'http://www.JOI.com/schemas/ViaSub.WMS/FindOrders',
-      path.join(__dirname, 'find-orders.xml')
+      path.join(__dirname, 'request', 'find-orders.xml')
     )
       .fetch({
         BeginDate: beginDate.format('YYYY-MM-DD'),
