@@ -2,6 +2,14 @@ import Seneca from 'seneca';
 
 let client;
 
+export function close() {
+  if (client) {
+    client.close(function (err) {
+      if (err) console.error('err: ' + err)
+    });
+  }
+}
+
 export default function () {
   if (client) return client;
   process.stdin.resume();
@@ -16,9 +24,9 @@ export default function () {
   });
 
   function exitHandler() {
-    seneca.close(function (err) {
-      if (err) console.error('err: ' + err)
-    });
+    if (seneca) {
+      close();
+    }
   }
 
   process.on('exit', exitHandler);
