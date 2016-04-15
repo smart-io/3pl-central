@@ -1,9 +1,9 @@
 {
   "name": "3pl-central",
   "author": "Gabriel Bull",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "3PL Central API Wrapper",
-  "main": "./src/index.js",
+  "main": "./lib/index.js",
   "keywords": [
     "3pl",
     "central",
@@ -31,11 +31,13 @@
     "mocha": "^2.4.5"
   },
   "scripts": {
+    "build": "./node_modules/.bin/babel ./src --out-dir ./lib",
     "docker-build": "docker build -t smartio/3pl-central .",
     "docker-run": "docker run -p 10101:10101 -it --rm --name 3pl-central -v \"$PWD\":/usr/src/app -w /usr/src/app smartio/3pl-central",
     "docker-push": "docker push smartio/3pl-central",
     "eslint": "./node_modules/.bin/eslint ./src ./test",
-    "prepublish": "npm run eslint && npm run test",
+    "prebuild": "rm -rf lib && npm run eslint && npm run test",
+    "prepublish": "npm run build",
     "serve": "./node_modules/.bin/babel-node src/server.js",
     "test": "./node_modules/.bin/mocha test"
   }

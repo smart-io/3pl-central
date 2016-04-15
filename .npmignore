@@ -6,6 +6,7 @@
 /.eslintrc
 /README.md
 /test
+/src
 /.env
 /.env.dist
 /supervisord.conf

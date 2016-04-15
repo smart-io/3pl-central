@@ -3,6 +3,6 @@ import { findOrders } from '../../src/index';
 
 describe('API', () => {
   it('should be exported', () => {
-    expect(findOrders).to.exist;
+    expect(findOrders).to.be.a('function');
   });
 });
