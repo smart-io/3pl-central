@@ -1,23 +1,68 @@
 import amqp from 'amqplib/callback_api';
 
+function generateUuid() {
+  return Math.random().toString() +
+    Math.random().toString() +
+    Math.random().toString();
+}
+
 class Client {
   connection;
   host;
+  channel;
+  pendingRequests = [];
   eventListeners = {};
 
-  connect(host) {
+  connect = host => {
     this.host = host;
-  }
+    return new Promise((resolve, reject) => {
+      amqp.connect('amqp://' + this.host, (err, connection) => {
+        if (err) return reject(err);
+        this.connection = connection;
+        this.connection.createChannel((err, channel) => {
+          if (err) return reject(err);
+          this.channel = channel;
+          resolve();
+        });
+      });
+    });
+  };
 
-  close() {
-    if (this.connection) {
-      this.connection.close();
-      this.connection = null;
-    }
+  close = () => {
+    this.connection.close();
+  };
+
+  request = (command, args) => {
+    return new Promise((resolve, reject) => {
+      if (!this.channel) {
+        this.pendingRequests.push([command, args, resolve, reject]);
+      } else {
+        this.doRequest(command, args, resolve, reject);
+      }
+    });
+  };
+
+  doRequest(command, args, resolve, reject) {
+    this.channel.assertQueue('', { exclusive: true }, (err, q) => {
+      const corr = generateUuid();
+
+      this.channel.consume(q.queue, function(msg) {
+        if (msg.properties.correlationId == corr) {
+          let content = JSON.parse(msg.content.toString());
+          resolve(content);
+        }
+      }, { noAck: true });
+
+      this.channel.sendToQueue(
+        command,
+        new Buffer(JSON.stringify(args)),
+        { correlationId: corr, replyTo: q.queue }
+      );
+    });
   }
 
   listen() {
-    amqp.connect('amqp://' + this.host, function(err, conn) {
+    /*amqp.connect('amqp://' + this.host, (err, conn) => {
       if (err) throw err;
       this.connection = conn;
       this.connection.createChannel(function(err, ch) {
@@ -29,7 +74,7 @@ class Client {
           ch.consume(events[i], msg => this.trigger(events[i], msg.content.toJSON()), { noAck: true });
         }
       });
-    });
+    });*/
   }
 
   on(e, cb) {

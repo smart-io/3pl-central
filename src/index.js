@@ -1,4 +1,7 @@
 import Client from './client';
 
-export findOrders from './find-orders/client';
-export default new Client;
+export const client = new Client;
+export const connect = client.connect;
+export const close = client.close;
+
+export findOrders from './findOrders/client';
