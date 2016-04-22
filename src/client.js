@@ -26,7 +26,7 @@ class Client {
         this.connection.createChannel((err, channel) => {
           if (err) return reject(err);
           this.channel = channel;
-          resolve();
+          resolve(this);
         });
       });
     });
@@ -65,28 +65,22 @@ class Client {
     });
   }
 
-  listen() {
-    /*amqp.connect('amqp://' + this.host, (err, conn) => {
-      if (err) throw err;
-      this.connection = conn;
-      this.connection.createChannel(function(err, ch) {
-        const events = [
-          'new-order'
-        ];
-        for (let i = 0, len = events.length; i < len; ++i) {
-          ch.assertQueue(events[i], { durable: false });
-          ch.consume(events[i], msg => this.trigger(events[i], msg.content.toJSON()), { noAck: true });
-        }
-      });
-    });*/
-  }
+  listen = () => {
+    const events = [
+      'newOrder'
+    ];
+    for (let i = 0, len = events.length; i < len; ++i) {
+      this.channel.assertQueue(events[i], { durable: false });
+      this.channel.consume(events[i], msg => this.trigger(events[i], JSON.parse(msg.content.toString())), { noAck: true });
+    }
+  };
 
-  on(e, cb) {
+  on = (e, cb) => {
     if (!this.eventListeners[e]) this.eventListeners[e] = [];
     this.eventListeners[e].push(cb);
-  }
+  };
 
-  off(e, cb) {
+  off = (e, cb) => {
     if (!cb) {
       this.eventListeners[e] = [];
     } else {
@@ -96,7 +90,7 @@ class Client {
       }
       this.eventListeners[e] = finalEventListeners;
     }
-  }
+  };
 
   trigger(e, data) {
     if (this.eventListeners[e]) {

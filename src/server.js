@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import amqp from 'amqplib/callback_api';
+import tasks from './tasks';
 import findOrders from './findOrders/findOrders';
 
 dotenv.config();
@@ -16,16 +17,11 @@ class Server {
       if (err) throw err;
       this.connection = conn;
       this.connection.createChannel((err, ch) => {
-        const events = [
-          'new-order'
-        ];
-        for (let i = 0, len = events.length; i < len; ++i) {
-          ch.assertQueue(events[i], { durable: false });
-        }
         for (let i = 0, len = Server.requests.length; i < len; ++i) {
           ch.assertQueue(Server.requests[i], { durable: false });
           ch.consume(Server.requests[i], msg => this.handleRequest(ch, Server.requests[i], msg));
         }
+        tasks();
       });
     });
   }
