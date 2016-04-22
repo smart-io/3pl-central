@@ -14,6 +14,10 @@ class Client {
   eventListeners = {};
 
   connect = host => {
+    if (!host && process.env['3PL_CENTRAL_PORT']) {
+      let config = process.env['3PL_CENTRAL_PORT'].match(/\/\/([^:]*):?(\d*)/);
+      host = config[1];
+    }
     this.host = host;
     return new Promise((resolve, reject) => {
       amqp.connect('amqp://' + this.host, (err, connection) => {
