@@ -1,7 +1,7 @@
 {
   "name": "3pl-central",
   "author": "Gabriel Bull",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "3PL Central API Wrapper",
   "main": "./lib/index.js",
   "keywords": [
