@@ -46,7 +46,7 @@ class Client {
     });
   };
 
-  doRequest(command, args, resolve, reject) {
+  doRequest(command, args, resolve) {
     this.channel.assertQueue('', { exclusive: true }, (err, q) => {
       const corr = generateUuid();
 
