@@ -35,7 +35,7 @@ class Server {
         }
 
         tasks();
-        dispatcher();
+        dispatcher(ch);
       });
     });
   }

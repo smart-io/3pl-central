@@ -1,27 +1,15 @@
-import { store } from './app';
-import { Observable } from 'rxjs/Observable';
+import syncOrders from './syncOrders/syncOrders';
 
-// todo use RX instead of Redux
+export default function (channel) {
+  const orders$ = syncOrders();
 
-export default function () {
-  store.subscribe(() => {
-
-  });
+  orders$
+    .subscribe(result => {
+      const order = result.order;
+      if (result.insert) {
+        channel.assertQueue('newOrder', { durable: true });
+        channel.sendToQueue('newOrder', new Buffer(JSON.stringify(order)));
+      }
+      //if (result.update) console.log('update ' + order.WarehouseTransactionID);
+    });
 }
-
-const createOrder$ = new Observable(observer => {
-  let timeout = setTimeout(() => {
-    observer.next('observable timout')
-  }, 2000);
-
-  return () => {
-    clearTimeout(timeout);
-    console.log('by bye');
-  };
-});
-
-let disposable = createOrder$.subscribe(value => {
-  console.log(value);
-});
-
-//createOrder$.publish();

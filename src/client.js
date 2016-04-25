@@ -50,18 +50,20 @@ class Client {
     this.channel.assertQueue('', { exclusive: true }, (err, q) => {
       const corr = generateUuid();
 
-      this.channel.consume(q.queue, function(msg) {
-        if (msg.properties.correlationId == corr) {
-          let content = JSON.parse(msg.content.toString());
-          resolve(content);
-        }
-      }, { noAck: true });
+      if (q) {
+        this.channel.consume(q.queue, function(msg) {
+          if (msg.properties.correlationId == corr) {
+            let content = JSON.parse(msg.content.toString());
+            resolve(content);
+          }
+        }, { noAck: true });
 
-      this.channel.sendToQueue(
-        command,
-        new Buffer(JSON.stringify(args)),
-        { correlationId: corr, replyTo: q.queue }
-      );
+        this.channel.sendToQueue(
+          command,
+          new Buffer(JSON.stringify(args)),
+          { correlationId: corr, replyTo: q.queue }
+        );
+      }
     });
   }
 
