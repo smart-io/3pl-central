@@ -1,11 +1,49 @@
 import moment from 'moment';
-import { connect } from '../mongo';
+import { connect, close } from '../mongo';
 import findOrders from '../findOrders/findOrders';
 import { store } from '../app';
 import * as ordersActions from '../orders/ordersActions';
+import Rx from 'rxjs/Rx';
+import 'rxjs/Rx';
 
 function fetchLatestSync() {
   return null;
+}
+
+function fetchAllOrders() {
+  return new Rx.Observable.create(observer => {
+    const latestSync = fetchLatestSync();
+
+    const pushToStream = function (orders) {
+      orders.forEach(order => observer.next(order));
+    };
+
+    if (!latestSync) {
+      let currentMonth = 0;
+      let nextOrders = [];
+      const fetch = function () {
+        fetchOneMonth(currentMonth).then(orders => {
+          if (orders && orders.length) {
+            currentMonth++;
+            nextOrders = [ ...orders, ...nextOrders ];
+            fetch();
+          } else {
+            let finalOrders = {};
+            for (let i = 0, len = nextOrders.length; i < len; ++i) {
+              finalOrders[nextOrders[i].WarehouseTransactionID] = nextOrders[i];
+            }
+            nextOrders = finalOrders;
+            finalOrders = [];
+            for (let prop in nextOrders) {
+              if (nextOrders.hasOwnProperty(prop)) finalOrders.push(nextOrders[prop]);
+            }
+            pushToStream(finalOrders);
+          }
+        }).catch(err => console.error(err));
+      };
+      fetch();
+    }
+  });
 }
 
 function fetchOneMonth(month = 0) {
@@ -19,40 +57,36 @@ function fetchOneMonth(month = 0) {
   });
 }
 
-function persistOrders(orders) {
-  return new Promise((resolve, reject) => {
-    connect().then(db => {
-      const total = orders.length;
-      let index = 0;
-      db.collection('orders').createIndex({ WarehouseTransactionID: 1 }, { unique: true });
-      orders.forEach(order => {
-        db.collection('orders').updateOne(
-          { WarehouseTransactionID : order.WarehouseTransactionID },
-          { $set: { ...order } },
-          { upsert: true },
-          function(err, result) {
-            if (err) throw err;
-            index++;
-            if (result.result.upserted) {
-              store.dispatch(ordersActions.createOrder(order));
-            } else if (result.result.nModified) {
-              store.dispatch(ordersActions.updateOrder(order));
-            }
-            if (index === total) resolve();
-          }
-        );
-      });
-    }).catch(reject);
-  });
+function persistOrder(order, observer) {
+  connect().then(db => {
+    db.collection('orders').createIndex({ WarehouseTransactionID: 1 }, { unique: true });
+    db.collection('orders').updateOne(
+      { WarehouseTransactionID : order.WarehouseTransactionID },
+      { $set: { ...order } },
+      { upsert: true },
+      function(err, result) {
+        if (err) throw err;
+        if (result.result.upserted) observer.next({ insert: true, order });
+        else if (result.result.nModified) observer.next({ update: true, order });
+      }
+    );
+  }).catch(err => { throw err });
 }
 
 export default function () {
-  const latestSync = fetchLatestSync();
-  if (!latestSync) {
-    fetchOneMonth().then(orders => {
-      if (orders.length) {
-        persistOrders(orders);
-      }
-    }).catch();
-  }
+  return Rx.Observable.create(observer => {
+    const fetch = () => {
+      fetchAllOrders().subscribe(order => {
+        persistOrder(order, observer);
+      });
+    };
+
+    const timeout = setTimeout(fetch, 100);
+    const interval = setInterval(fetch, 1000 * 60);
+
+    return () => {
+      clearTimeout(timeout);
+      clearInterval(interval);
+    };
+  });
 }

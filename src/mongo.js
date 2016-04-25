@@ -6,6 +6,7 @@ export function connect() {
   return new Promise((resolve, reject) => {
     if (connection) return resolve(connection);
     mongodb.MongoClient.connect('mongodb://localhost:27017/3pl-central', function(err, db) {
+      if (err) return reject(err);
       connection = db;
       resolve(db);
     });
