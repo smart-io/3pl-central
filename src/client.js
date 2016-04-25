@@ -70,8 +70,11 @@ class Client {
       'newOrder'
     ];
     for (let i = 0, len = events.length; i < len; ++i) {
-      this.channel.assertQueue(events[i], { durable: false });
-      this.channel.consume(events[i], msg => this.trigger(events[i], JSON.parse(msg.content.toString())), { noAck: true });
+      this.channel.assertQueue(events[i], { durable: true });
+      this.channel.consume(events[i], msg => {
+        this.channel.ack(msg);
+        this.trigger(events[i], JSON.parse(msg.content.toString()))
+      });
     }
   };
 
