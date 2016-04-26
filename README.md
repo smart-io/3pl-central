@@ -16,7 +16,7 @@ docker run -p 4369:4369 -p 5671:5671 -p 5672:5672 -p 25672:25672 it --rm --name 
   env_file: .env
   image: smartio/3pl-central
   volumes:
-   - "/mnt/sda1/var/mysql_data:/var/lib/mysql"
+   - "/mnt/sda1/var/3pl_central_data:/data/db"
   ports:
     - "4369:4369"
 ```
