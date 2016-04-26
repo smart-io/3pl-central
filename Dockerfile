@@ -28,6 +28,7 @@ COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN git clone https://github.com/smart-io/3pl-central.git /usr/src/app
 RUN cd /usr/src/app && npm install --ignore-scripts
 
-EXPOSE 4369 5671 5672 25672 # DEV 27017 15672
+EXPOSE 4369 5671 5672 25672
+# DEV EXPOSE 27017 15672
 
 CMD ["/usr/bin/supervisord"]
