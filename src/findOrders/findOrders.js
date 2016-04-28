@@ -19,6 +19,6 @@ export default function(beginDate, endDate) {
       .then((response) => {
         resolve(response['FindOrders']['orders']['order']);
       })
-      .catch(reject);
+      .catch(err => reject(err));
   });
 }

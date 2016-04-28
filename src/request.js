@@ -24,7 +24,7 @@ class Request {
             body: content
           })
             .then(function(response) {
-              if (response.status >= 400) return reject();
+              if (response.status >= 400) reject(response.statusText);
               return response.text();
             })
             .then(this.parseResponse)
