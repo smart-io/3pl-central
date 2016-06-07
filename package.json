@@ -1,7 +1,7 @@
 {
   "name": "3pl-central",
   "author": "Gabriel Bull",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "3PL Central API Wrapper",
   "main": "./lib/index.js",
   "keywords": [
@@ -18,6 +18,7 @@
     "amqplib": "^0.4.1",
     "dotenv": "^2.0.0",
     "isomorphic-fetch": "^2.2.1",
+    "log": "^1.4.0",
     "moment": "^2.12.0",
     "mongodb": "^2.1.16",
     "rxjs": "^5.0.0-beta.6",

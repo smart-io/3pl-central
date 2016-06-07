@@ -3,6 +3,7 @@ import amqp from 'amqplib/callback_api';
 import tasks from './tasks';
 import findOrders from './findOrders/findOrders';
 import dispatcher from './dispatcher';
+import log from './log';
 
 dotenv.config();
 
@@ -15,20 +16,26 @@ class Server {
 
   listen() {
     amqp.connect('amqp://localhost', (err, connection) => {
-      if (err) return setTimeout(() => this.listen(), 1000);
+      if (err) {
+        log.error('AMQP error: %s', err.message);
+        return process.exit(1);
+      }
       this.connection = connection;
 
-      this.connection.on('error', () => {
+      this.connection.on('error', err => {
+        log.error('AMQP error: %s', err.message);
         this.connection = null;
-        setTimeout(() => this.listen(), 1000);
+        process.exit(1);
       });
 
       this.connection.on('close', () => {
+        log.error('AMQP connection closed');
         this.connection = null;
-        setTimeout(() => this.listen(), 1000);
+        process.exit(1);
       });
 
       this.connection.createChannel((err, ch) => {
+        log.info('AMQP connection open');
         for (let i = 0, len = Server.requests.length; i < len; ++i) {
           ch.assertQueue(Server.requests[i], { durable: true });
           ch.consume(Server.requests[i], msg => this.handleRequest(ch, Server.requests[i], msg));
