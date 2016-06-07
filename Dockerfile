@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get install -y git curl
+RUN apt-get update && apt-get install -y --force-yes git curl
 
 # Install mongo
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
