@@ -23,6 +23,15 @@ class Client {
       amqp.connect('amqp://' + this.host, (err, connection) => {
         if (err) return reject(err);
         this.connection = connection;
+
+        this.connection.on('error', err => {
+          throw err;
+        });
+
+        this.connection.on('close', () => {
+          throw err;
+        });
+
         this.connection.createChannel((err, channel) => {
           if (err) return reject(err);
           this.channel = channel;
