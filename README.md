@@ -6,7 +6,7 @@ Config in `.env` file.
 
 ```
 docker pull smartio/3pl-central
-docker run -p 4369:4369 -p 5671:5671 -p 5672:5672 -p 25672:25672 it --rm --name 3pl-central smartio/3pl-central 
+docker run -p 80:80 it --rm --name 3pl-central smartio/3pl-central 
 ```
 
 ## Docker Compose
@@ -18,7 +18,7 @@ docker run -p 4369:4369 -p 5671:5671 -p 5672:5672 -p 25672:25672 it --rm --name 
   volumes:
    - "/mnt/sda1/var/3pl_central_data:/data/db"
   ports:
-    - "4369:4369"
+    - "80:80"
 ```
 
 ## Usage

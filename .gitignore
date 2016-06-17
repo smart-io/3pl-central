@@ -5,3 +5,5 @@ Dockerfile_dev
 Dockerfile_dev.bak
 /dump.rdb
 /vendor/
+/npm-debug.log
+
