@@ -2,5 +2,10 @@
   "require": {
     "doctrine/orm": "^2.5",
     "predis/predis": "^1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "ThreePlCentral\\": "src/"
+    }
   }
 }

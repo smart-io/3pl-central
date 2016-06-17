@@ -12,7 +12,18 @@ COPY config/redis.conf /etc/redis/redis.conf
 RUN echo mysql-server mysql-server/root_password password password | debconf-set-selections && \
     echo mysql-server mysql-server/root_password_again password password | debconf-set-selections && \
     apt-get install -y mysql-server && \
-    mkdir -p /var/log/mysql
+    mkdir -p /var/log/mysql && \
+    service mysql start && \
+    mysql -u root -ppassword -e "DELETE FROM mysql.user WHERE User='';" && \
+    mysql -u root -ppassword -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');" && \
+    mysql -u root -ppassword -e "DROP DATABASE IF EXISTS test;" && \
+    mysql -u root -ppassword -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';" && \
+    mysql -u root -ppassword -e "FLUSH PRIVILEGES;" && \
+    mysql -u root -ppassword -e "CREATE DATABASE 3pl_central;" && \
+    mysql -u root -ppassword -e "CREATE USER '3pl_central'@'%' IDENTIFIED BY 'password';" && \
+    mysql -u root -ppassword -e "GRANT ALL PRIVILEGES ON 3pl_central.* TO '3pl_central'@'%' WITH GRANT OPTION;" && \
+    mysql -u root -ppassword -e "FLUSH PRIVILEGES;" && \
+    service mysql stop
 
 # Install PHP
 RUN apt-get install -y software-properties-common python-software-properties && \

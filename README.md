@@ -16,7 +16,7 @@ docker run -p 80:80 it --rm --name 3pl-central smartio/3pl-central
   env_file: .env
   image: smartio/3pl-central
   volumes:
-   - "/mnt/sda1/var/3pl_central_data:/data/db"
+   - "/mnt/sda1/var/3pl_central_data:/var/lib/mysql"
   ports:
     - "80:80"
 ```
