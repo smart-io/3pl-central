@@ -1,7 +1,9 @@
 {
   "require": {
     "doctrine/orm": "^2.5",
-    "predis/predis": "^1.1"
+    "predis/predis": "^1.1",
+    "vlucas/phpdotenv": "^2.3",
+    "doctrine/migrations": "^1.4"
   },
   "autoload": {
     "psr-4": {
