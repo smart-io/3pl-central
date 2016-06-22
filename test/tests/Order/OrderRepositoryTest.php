@@ -17,10 +17,12 @@ class OrderRepositoryTest extends PHPUnit_Framework_TestCase
 
     public function testFindOrders()
     {
-        OrderRepository::findOrders(
+        $orders = OrderRepository::findOrders(
             new ThreePlCentral('', '', '', '', ''),
             new DateTime('2016-01-01 00:00:00'),
             new DateTime('2016-01-31 00:00:00')
         );
+
+        $this->assertCount(2, $orders);
     }
 }
