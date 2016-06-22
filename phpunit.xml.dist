@@ -9,7 +9,7 @@
          syntaxCheck="false">
     <testsuites>
         <testsuite name="3PL Central API Test Suite">
-            <directory>./test/</directory>
+            <directory>./test/tests/</directory>
         </testsuite>
     </testsuites>
     <filter>

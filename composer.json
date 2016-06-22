@@ -25,7 +25,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "ThreePlCentral\\Test\\": ["test"]
+      "ThreePlCentral\\Test\\": ["test/tests", "test/includes"]
     }
   },
   "minimum-stability": "dev",

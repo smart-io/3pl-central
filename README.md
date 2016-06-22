@@ -1,7 +1,7 @@
-# ![PHP 3PL Central](https://rawgit.com/smart-io/php-3pl-central/develop/php-3pl-central-logo.svg "PHP 3PL Central")
+# ![PHP 3PL Central](https://rawgit.com/smart-io/php-3pl-central/master/php-3pl-central-logo.svg "PHP 3PL Central")
 
-[![Build Status](https://api.travis-ci.org/smart-io/php-3pl-central.svg?branch=master)](https://travis-ci.org/smart-io/php-3pl-central)
-[![StyleCI](https://styleci.io/repos/7774788/shield)](https://styleci.io/repos/7774788)
+[![Build Status](https://travis-ci.org/smart-io/php-3pl-central.svg?branch=master)](https://travis-ci.org/smart-io/php-3pl-central)
+[![StyleCI](https://styleci.io/repos/53067404/shield)](https://styleci.io/repos/53067404)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/smart-io/php-3pl-central/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/smart-io/php-3pl-central/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/smart-io/php-3pl-central/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/smart-io/php-3pl-central/?branch=master)
 [![Code Climate](https://codeclimate.com/github/smart-io/php-3pl-central/badges/gpa.svg)](https://codeclimate.com/github/smart-io/php-3pl-central)
@@ -9,7 +9,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/smart/3pl-central.svg?style=flat)](https://packagist.org/packages/smart/3pl-central)
 [![License](https://img.shields.io/packagist/l/smart/3pl-central.svg?style=flat)](https://packagist.org/packages/smart/3pl-central)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/22e29343-ee01-4cd1-8796-c19152c3c195/mini.png)](https://insight.sensiolabs.com/projects/22e29343-ee01-4cd1-8796-c19152c3c195)
-[![Join the chat at https://gitter.im/smart-io/php-3pl-central](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/smart-io/php-3pl-central?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/smart-io/php-3pl-central](https://badges.gitter.im/smart-io/php-3pl-central.svg)](https://gitter.im/smart-io/php-3pl-central?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This library is aimed at wrapping the 3PL Central API into a simple to use PHP Library. Feel free to contribute.
 
@@ -17,7 +17,9 @@ This library is aimed at wrapping the 3PL Central API into a simple to use PHP L
 
 1. [Requirements](#requirements)
 2. [Installation](#installation)
-3. [Order](#order)
+3. [Find Orders](#find-orders)
+    * [Example](#find-orders-example)
+    * [Parameters](#find-orders-parameters)
 4. [License](#license)
 
 <a name="requirements"></a>
@@ -38,8 +40,26 @@ run the Composer command to install the latest stable version of PHP 3PL Central
 composer require smart/3pl-central
 ```
 
-<a name="order"></a>
-## Order
+<a name="find-orders"></a>
+## Find Orders
+
+<a name="find-orders-example"></a>
+### Example
+
+```php
+use ThreePlCentral\ThreePlCentral;
+
+$threepl = new ThreePlCentral($id, $customerId, $facilityId, $login, $password);
+$threepl->findOrders((new DateTime())->modify('-30 days'), new DateTime());
+```
+
+<a name="find-orders-parameters"></a>
+### Parameters
+
+Find Orders parameters are:
+
+ * `beginDate` __Object(DateTime)__ Beginning date time for the retrieval criteria of the orders.
+ * `endDate` __Object(DateTime)__ Ending date time for the retrieval criteria of the orders.
 
 ### Fields
 

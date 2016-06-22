@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <userLoginData xmlns="http://www.JOI.com/schemas/ViaSub.WMS/">
+      <ThreePLID>{ThreePLID}</ThreePLID>
+      <Login>{Login}</Login>
+      <Password>{Password}</Password>
+    </userLoginData>
+    <focr xmlns="http://www.JOI.com/schemas/ViaSub.WMS/">
+      <CustomerID>{CustomerID}</CustomerID>
+      <FacilityID>{FacilityID}</FacilityID>
+      <OverAlloc>Any</OverAlloc>
+      <Closed>Any</Closed>
+      <ASNSent>Any</ASNSent>
+      <RouteSent>Any</RouteSent>
+      <BeginDate>{BeginDate}</BeginDate>
+      <EndDate>{EndDate}</EndDate>
+      <DateRangeType>Confirm</DateRangeType>
+    </focr>
+    <limitCount xmlns="http://www.JOI.com/schemas/ViaSub.WMS/">1000</limitCount>
+  </soap:Body>
+</soap:Envelope>
