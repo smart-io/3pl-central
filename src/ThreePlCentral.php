@@ -13,7 +13,8 @@ class ThreePlCentral
     private $login;
     private $password;
 
-    public function __construct(string $id, string $customerId, string $facilityId, string $login, string $password) {
+    public function __construct(string $id, string $customerId, string $facilityId, string $login, string $password)
+    {
         $this->id = $id;
         $this->customerId = $customerId;
         $this->facilityId = $facilityId;

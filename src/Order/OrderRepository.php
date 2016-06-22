@@ -23,7 +23,9 @@ class OrderRepository
         ]);
 
         $result = $response->json();
-        if (!is_array($result)) $result = [$result];
+        if (!is_array($result)) {
+            $result = [$result];
+        }
 
         $finalOrders = [];
         foreach ($result as $item) {

@@ -23,11 +23,11 @@ class Response implements \ThreePlCentral\ResponseInterface
     public function json(): array
     {
         $body = $this->body();
-        $xml = new DOMDocument( "1.0", "ISO-8859-15" );
+        $xml = new DOMDocument("1.0", "ISO-8859-15");
         $xml->loadXML($body);
 
         $body = null;
-        foreach($xml->firstChild->childNodes as $node) {
+        foreach ($xml->firstChild->childNodes as $node) {
             if (!($node instanceof DOMText) && $node->tagName === 'soap:Body') {
                 $body = $node;
                 break;
@@ -36,7 +36,7 @@ class Response implements \ThreePlCentral\ResponseInterface
 
         if ($body) {
             $content = null;
-            foreach($body->childNodes as $node) {
+            foreach ($body->childNodes as $node) {
                 if (!($node instanceof DOMText)) {
                     $content = $node;
                     break;
@@ -53,8 +53,9 @@ class Response implements \ThreePlCentral\ResponseInterface
     {
         $xml = new \SimpleXMLElement($xml);
         $obj = json_decode(json_encode($xml));
-        foreach($obj as $param => $value) {
+        foreach ($obj as $param => $value) {
             return $value;
         }
+        return null;
     }
 }
