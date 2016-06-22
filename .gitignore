@@ -1,9 +1,6 @@
+composer.lock
+phpunit.xml
+vendor
+php-ups-api.iml
+.idea
 .env
-supervisord.log
-supervisord.pid
-Dockerfile_dev
-Dockerfile_dev.bak
-/dump.rdb
-/vendor/
-/npm-debug.log
-

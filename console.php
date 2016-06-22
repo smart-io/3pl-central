@@ -5,32 +5,20 @@ require_once 'vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
-use Doctrine\ORM\Tools\Setup;
-use Doctrine\ORM\EntityManager;
 use Symfony\Component\Console\Helper\HelperSet;
 use Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper;
 use Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper;
 use Doctrine\DBAL\Migrations\Configuration\Configuration;
 use Symfony\Component\Console\Helper\QuestionHelper;
 
-$paths = [__DIR__ . '/src'];
-$isDevMode = false;
-
-$dbParams = [
-    'driver'   => 'pdo_mysql',
-    'user'     => '3pl_central',
-    'password' => 'password',
-    'dbname'   => '3pl_central',
-];
-
 $console = new Application();
-$config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
-$entityManager = EntityManager::create($dbParams, $config);
-$db = new ConnectionHelper($entityManager->getConnection());
+$container = require "index.php";
+
+$db = new ConnectionHelper($container->get('em')->getConnection());
 
 $helperSet = new HelperSet([
     'db' => $db,
-    'em' => new EntityManagerHelper($entityManager),
+    'em' => new EntityManagerHelper($container->get('em')),
     'dialog' => new QuestionHelper()
 ]);
 
@@ -38,7 +26,7 @@ $console->setHelperSet($helperSet);
 
 ConsoleRunner::addCommands($console);
 
-$migrationsConfig = new Configuration($entityManager->getConnection());
+$migrationsConfig = new Configuration($container->get('em')->getConnection());
 $migrationsConfig->setName('DBAL Migrations');
 $migrationsConfig->setMigrationsNamespace('Migrations');
 $migrationsConfig->setMigrationsTableName('migration_versions');

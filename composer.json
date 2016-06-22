@@ -1,13 +1,33 @@
 {
+  "name": "smart/3pl-central",
+  "type": "library",
+  "description": "PHP 3PL Central",
+  "keywords": ["3pl", "central", "api", "wrapper", "warehouse"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gabriel Bull",
+      "email": "me@gabrielbull.com"
+    }
+  ],
   "require": {
-    "doctrine/orm": "^2.5",
-    "predis/predis": "^1.1",
-    "vlucas/phpdotenv": "^2.3",
-    "doctrine/migrations": "^1.4"
+    "php": "^7.0",
+    "guzzlehttp/guzzle": "^6.0",
+    "psr/log": "^1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.0"
   },
   "autoload": {
     "psr-4": {
       "ThreePlCentral\\": "src/"
     }
-  }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ThreePlCentral\\Test\\": ["test"]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

@@ -1,55 +1,47 @@
-# 3PL Central
+# ![PHP 3PL Central](https://rawgit.com/smart-io/php-3pl-central/develop/php-3pl-central-logo.svg "PHP 3PL Central")
 
-## Microservice
+[![Build Status](https://api.travis-ci.org/smart-io/php-3pl-central.svg?branch=master)](https://travis-ci.org/smart-io/php-3pl-central)
+[![StyleCI](https://styleci.io/repos/7774788/shield)](https://styleci.io/repos/7774788)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/smart-io/php-3pl-central/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/smart-io/php-3pl-central/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/smart-io/php-3pl-central/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/smart-io/php-3pl-central/?branch=master)
+[![Code Climate](https://codeclimate.com/github/smart-io/php-3pl-central/badges/gpa.svg)](https://codeclimate.com/github/smart-io/php-3pl-central)
+[![Latest Stable Version](http://img.shields.io/packagist/v/smart/3pl-central.svg?style=flat)](https://packagist.org/packages/smart/3pl-central)
+[![Total Downloads](https://img.shields.io/packagist/dt/smart/3pl-central.svg?style=flat)](https://packagist.org/packages/smart/3pl-central)
+[![License](https://img.shields.io/packagist/l/smart/3pl-central.svg?style=flat)](https://packagist.org/packages/smart/3pl-central)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/22e29343-ee01-4cd1-8796-c19152c3c195/mini.png)](https://insight.sensiolabs.com/projects/22e29343-ee01-4cd1-8796-c19152c3c195)
+[![Join the chat at https://gitter.im/smart-io/php-3pl-central](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/smart-io/php-3pl-central?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Config in `.env` file.
+This library is aimed at wrapping the 3PL Central API into a simple to use PHP Library. Feel free to contribute.
 
-```
-docker pull smartio/3pl-central
-docker run -p 80:80 it --rm --name 3pl-central smartio/3pl-central 
-```
+## Table Of Content
 
-## Docker Compose
+1. [Requirements](#requirements)
+2. [Installation](#installation)
+3. [Order](#order)
+4. [License](#license)
 
-```yaml
-3pl-central:
-  env_file: .env
-  image: smartio/3pl-central
-  volumes:
-   - "/mnt/sda1/var/3pl_central_data:/var/lib/mysql"
-  ports:
-    - "80:80"
-```
+<a name="requirements"></a>
+## Requirements
 
-## Usage
+This library uses PHP 7.0+.
 
-### Listen to new orders
- 
-```js
-import { connect, listen } from '3pl-central';
+To use the 3PL Central, you have to [obtain credentials from 3PL Central](http://3plcentral.com/support/). For every request,
+you will have to provide the ID, Customer ID, Facility ID and your 3PL Central Login and Password.
 
-connect(host)
-  .then(client => {
-    client.on('newOrder', order => console.log(order));
-  })
-  .then(listen);
-```
+<a name="installation"></a>
+## Installation
 
-### Find orders
- 
-```js
-import { connect, close, findOrders } from '3pl-central';
-import moment from 'moment';
+It is recommended that you install the PHP 3PL Central library [through composer](http://getcomposer.org/). To do so,
+run the Composer command to install the latest stable version of PHP 3PL Central:
 
-connect(host)
-  .then(() => findOrders(moment().subtract(14, 'days')))
-  .then(orders => console.log(orders))
-  .then(close);
+```shell
+composer require smart/3pl-central
 ```
 
-### Data Structure
+<a name="order"></a>
+## Order
 
-#### Order
+### Fields
 
 ```
 CustomerName
@@ -97,3 +89,8 @@ ASNSentDate
 ConfirmASNSentDate
 RememberRowInfo
 ```
+
+<a name="license"></a>
+## License
+
+PHP 3PL Central is licensed under The MIT License (MIT).
