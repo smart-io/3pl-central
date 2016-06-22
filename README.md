@@ -1,5 +1,7 @@
 # ![PHP 3PL Central](https://rawgit.com/smart-io/php-3pl-central/develop/php-3pl-central-logo.svg "PHP 3PL Central")
 
+[![Join the chat at https://gitter.im/smart-io/php-3pl-central](https://badges.gitter.im/smart-io/php-3pl-central.svg)](https://gitter.im/smart-io/php-3pl-central?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://api.travis-ci.org/smart-io/php-3pl-central.svg?branch=master)](https://travis-ci.org/smart-io/php-3pl-central)
 [![StyleCI](https://styleci.io/repos/7774788/shield)](https://styleci.io/repos/7774788)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/smart-io/php-3pl-central/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/smart-io/php-3pl-central/?branch=master)
