@@ -37,10 +37,11 @@ class Request implements RequestInterface
 
         try {
             $reponse = $client->send($request);
-            var_dump($reponse);
         } catch (\Exception $error) {
             throw new Exception($error->getMessage(), $error->getCode(), $error);
         }
+        
+        return new Response($reponse);
     }
 
     private function getBody(array $data): string
@@ -115,5 +116,10 @@ class Request implements RequestInterface
     public function setPassword(string $password)
     {
         $this->password = $password;
+    }
+
+    public function getUrl(): string
+    {
+        return $this->url;
     }
 }

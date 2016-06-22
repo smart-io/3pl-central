@@ -1,6 +1,4 @@
 composer.lock
 phpunit.xml
 vendor
-php-ups-api.iml
 .idea
-.env
