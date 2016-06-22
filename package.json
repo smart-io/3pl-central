@@ -20,11 +20,10 @@
   },
   "scripts": {
     "docker-build": "docker build --force-rm --no-cache -t smartio/3pl-central .",
-    "docker-run": "docker run -p 80:80 -p 3306:3306 -p 6379:6379 -it --rm --name 3pl-central -v \"$PWD\":/usr/src/app -w /usr/src/app smartio/3pl-central",
+    "docker-run": "docker run -p 3000:80 -p 3001:3306 -p 3002:6379 -it --rm --name 3pl-central -v \"$PWD\":/usr/src/app -w /usr/src/app smartio/3pl-central",
     "docker-bash": "docker exec -i -t 3pl-central bash",
     "predocker-publish": "npm run docker-build",
     "docker-publish": "docker push smartio/3pl-central",
-    "predocker-dev": "rm -f Dockerfile_dev && cp Dockerfile Dockerfile_dev && sed -i '.bak' 's/# DEV //g' Dockerfile_dev && rm -f Dockerfile_dev.bak",
-    "docker-dev": "docker build -t smartio/3pl-central -f Dockerfile_dev . && npm run docker-run"
+    "docker-dev": "docker build -t smartio/3pl-central . && npm run docker-run"
   }
 }

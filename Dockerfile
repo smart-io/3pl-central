@@ -13,6 +13,7 @@ RUN echo mysql-server mysql-server/root_password password password | debconf-set
     echo mysql-server mysql-server/root_password_again password password | debconf-set-selections && \
     apt-get install -y mysql-server && \
     mkdir -p /var/log/mysql && \
+    sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/mysql.conf.d/mysqld.cnf && \
     service mysql start && \
     mysql -u root -ppassword -e "DELETE FROM mysql.user WHERE User='';" && \
     mysql -u root -ppassword -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');" && \
@@ -22,8 +23,7 @@ RUN echo mysql-server mysql-server/root_password password password | debconf-set
     mysql -u root -ppassword -e "CREATE DATABASE 3pl_central;" && \
     mysql -u root -ppassword -e "CREATE USER '3pl_central'@'%' IDENTIFIED BY 'password';" && \
     mysql -u root -ppassword -e "GRANT ALL PRIVILEGES ON 3pl_central.* TO '3pl_central'@'%' WITH GRANT OPTION;" && \
-    mysql -u root -ppassword -e "FLUSH PRIVILEGES;" && \
-    service mysql stop
+    mysql -u root -ppassword -e "FLUSH PRIVILEGES;"
 
 # Install PHP
 RUN apt-get install -y software-properties-common python-software-properties && \
@@ -44,15 +44,15 @@ RUN apt-get install -y supervisor && \
     mkdir -p /var/log/supervisor
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+# Install composer
+RUN wget https://getcomposer.org/composer.phar && \
+    mv composer.phar /usr/local/bin/composer && \
+    chmod +x /usr/local/bin/composer
+
 # Install project
 RUN git clone https://github.com/smart-io/3pl-central-service.git /usr/src/app
 RUN cd /usr/src/app && \
-    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
-    php -r "if (hash_file('SHA384', 'composer-setup.php') === '070854512ef404f16bac87071a6db9fd9721da1684cd4589b1196c3faf71b9a2682e2311b36a5079825e155ac7ce150d') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" && \
-    php composer-setup.php && \
-    php -r "unlink('composer-setup.php');" && \
-    ./composer.phar install --no-interaction --no-scripts --no-dev && \
-    rm -f composer.phar
+    composer install --no-interaction --no-scripts --no-dev
 
 # Cleanup
 RUN apt-get remove -y git curl wget unzip software-properties python-software-properties && \
