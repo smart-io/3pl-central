@@ -11,8 +11,9 @@ use Symfony\Component\Console\Helper\HelperSet;
 use Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper;
 use Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper;
 use Doctrine\DBAL\Migrations\Configuration\Configuration;
+use Symfony\Component\Console\Helper\QuestionHelper;
 
-$paths = ['/src'];
+$paths = [__DIR__ . '/src'];
 $isDevMode = false;
 
 $dbParams = [
@@ -29,8 +30,11 @@ $db = new ConnectionHelper($entityManager->getConnection());
 
 $helperSet = new HelperSet([
     'db' => $db,
-    'em' => new EntityManagerHelper($entityManager)
+    'em' => new EntityManagerHelper($entityManager),
+    'dialog' => new QuestionHelper()
 ]);
+
+$console->setHelperSet($helperSet);
 
 ConsoleRunner::addCommands($console);
 
@@ -63,5 +67,4 @@ $console->addCommands([
     $versionCommand,
 ]);
 
-$console->setHelperSet($helperSet);
 $console->run();

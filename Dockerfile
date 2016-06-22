@@ -54,6 +54,10 @@ RUN git clone https://github.com/smart-io/3pl-central-service.git /usr/src/app
 RUN cd /usr/src/app && \
     composer install --no-interaction --no-scripts --no-dev
 
+# Migrate DB
+RUN cd /usr/src/app && \
+    php console.php migrations:migrate --no-interaction
+
 # Cleanup
 RUN apt-get remove -y git curl wget unzip software-properties python-software-properties && \
     apt-get --purge autoremove -y
