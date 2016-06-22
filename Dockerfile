@@ -52,10 +52,11 @@ RUN wget https://getcomposer.org/composer.phar && \
 # Install project
 RUN git clone https://github.com/smart-io/3pl-central-service.git /usr/src/app
 RUN cd /usr/src/app && \
-    composer install --no-interaction --no-scripts --no-dev
+    composer install --no-interaction --no-dev
 
 # Migrate DB
-RUN cd /usr/src/app && \
+RUN service mysql start && \
+    cd /usr/src/app && \
     php console.php migrations:migrate --no-interaction
 
 # Cleanup
