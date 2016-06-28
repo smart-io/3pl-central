@@ -38,7 +38,8 @@ class Request implements RequestInterface
         try {
             $reponse = $client->send($request);
         } catch (\Exception $error) {
-            throw new Exception($error->getMessage(), $error->getCode(), $error);
+            $response = new Response($error->getResponse());
+            throw new Exception($response->json()['error'], $error->getCode(), $error);
         }
         
         return new Response($reponse);

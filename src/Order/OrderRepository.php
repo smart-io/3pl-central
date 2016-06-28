@@ -17,6 +17,7 @@ class OrderRepository
         );
 
         $request->setTemplate(__DIR__ . '/../Request/findOrders.xml');
+
         $response = $request->fetch([
             'BeginDate' => $beginDate->format('YYYY-MM-DD'),
             'EndDate' => $endDate->format('YYYY-MM-DD')

@@ -43,7 +43,7 @@ class Response implements \ThreePlCentral\ResponseInterface
                 }
             }
             if ($content) {
-                return $this->parseXmlContent(trim($content->nodeValue));
+                return $this->parseXmlContent($content->nodeValue);
             }
         }
         return [];
@@ -51,6 +51,10 @@ class Response implements \ThreePlCentral\ResponseInterface
 
     private function parseXmlContent(string $xml)
     {
+        $xml = trim($xml);
+        if (strncmp($xml, '<', 1) !== 0) {
+            return ['error' => $xml];
+        }
         $xml = new \SimpleXMLElement($xml);
         $obj = json_decode(json_encode($xml));
         foreach ($obj as $param => $value) {
