@@ -49,7 +49,7 @@ class OrderEntity
     private $confirmASNSentDate;
     private $rememberRowInfo;
 
-    public function getCustomerName(): string
+    public function getCustomerName()
     {
         return $this->customerName;
     }
@@ -59,7 +59,7 @@ class OrderEntity
         $this->customerName = $customerName;
     }
 
-    public function getCustomerEmail(): string
+    public function getCustomerEmail()
     {
         return $this->customerEmail;
     }
@@ -69,7 +69,7 @@ class OrderEntity
         $this->customerEmail = $customerEmail;
     }
 
-    public function getCustomerPhone(): string
+    public function getCustomerPhone()
     {
         return $this->customerPhone;
     }
@@ -79,7 +79,7 @@ class OrderEntity
         $this->customerPhone = $customerPhone;
     }
 
-    public function getFacility(): string
+    public function getFacility()
     {
         return $this->facility;
     }
@@ -89,7 +89,7 @@ class OrderEntity
         $this->facility = $facility;
     }
 
-    public function getFacilityID(): string
+    public function getFacilityID()
     {
         return $this->facilityID;
     }
@@ -99,7 +99,7 @@ class OrderEntity
         $this->facilityID = $facilityID;
     }
 
-    public function getWarehouseTransactionID(): string
+    public function getWarehouseTransactionID()
     {
         return $this->warehouseTransactionID;
     }
@@ -109,7 +109,7 @@ class OrderEntity
         $this->warehouseTransactionID = $warehouseTransactionID;
     }
 
-    public function getReferenceNum(): string
+    public function getReferenceNum()
     {
         return $this->referenceNum;
     }
@@ -119,7 +119,7 @@ class OrderEntity
         $this->referenceNum = $referenceNum;
     }
 
-    public function getPONum(): string
+    public function getPONum()
     {
         return $this->pONum;
     }
@@ -129,7 +129,7 @@ class OrderEntity
         $this->pONum = $pONum;
     }
 
-    public function getRetailer(): string
+    public function getRetailer()
     {
         return $this->retailer;
     }
@@ -139,7 +139,7 @@ class OrderEntity
         $this->retailer = $retailer;
     }
 
-    public function getShipToCompanyName(): string
+    public function getShipToCompanyName()
     {
         return $this->shipToCompanyName;
     }
@@ -149,7 +149,7 @@ class OrderEntity
         $this->shipToCompanyName = $shipToCompanyName;
     }
 
-    public function getShipToName(): string
+    public function getShipToName()
     {
         return $this->shipToName;
     }
@@ -159,7 +159,7 @@ class OrderEntity
         $this->shipToName = $shipToName;
     }
 
-    public function getShipToEmail(): string
+    public function getShipToEmail()
     {
         return $this->shipToEmail;
     }
@@ -169,7 +169,7 @@ class OrderEntity
         $this->shipToEmail = $shipToEmail;
     }
 
-    public function getShipToPhone(): string
+    public function getShipToPhone()
     {
         return $this->shipToPhone;
     }
@@ -179,7 +179,7 @@ class OrderEntity
         $this->shipToPhone = $shipToPhone;
     }
 
-    public function getShipToAddress1(): string
+    public function getShipToAddress1()
     {
         return $this->shipToAddress1;
     }
@@ -189,7 +189,7 @@ class OrderEntity
         $this->shipToAddress1 = $shipToAddress1;
     }
 
-    public function getShipToAddress2(): string
+    public function getShipToAddress2()
     {
         return $this->shipToAddress2;
     }
@@ -199,7 +199,7 @@ class OrderEntity
         $this->shipToAddress2 = $shipToAddress2;
     }
 
-    public function getShipToCity(): string
+    public function getShipToCity()
     {
         return $this->shipToCity;
     }
@@ -209,7 +209,7 @@ class OrderEntity
         $this->shipToCity = $shipToCity;
     }
 
-    public function getShipToState(): string
+    public function getShipToState()
     {
         return $this->shipToState;
     }
@@ -219,7 +219,7 @@ class OrderEntity
         $this->shipToState = $shipToState;
     }
 
-    public function getShipToZip(): string
+    public function getShipToZip()
     {
         return $this->shipToZip;
     }
@@ -229,7 +229,7 @@ class OrderEntity
         $this->shipToZip = $shipToZip;
     }
 
-    public function getShipToCountry(): string
+    public function getShipToCountry()
     {
         return $this->shipToCountry;
     }
@@ -239,7 +239,7 @@ class OrderEntity
         $this->shipToCountry = $shipToCountry;
     }
 
-    public function getShipMethod(): string
+    public function getShipMethod()
     {
         return $this->shipMethod;
     }
@@ -249,7 +249,7 @@ class OrderEntity
         $this->shipMethod = $shipMethod;
     }
 
-    public function getMarkForName(): string
+    public function getMarkForName()
     {
         return $this->markForName;
     }
@@ -259,7 +259,7 @@ class OrderEntity
         $this->markForName = $markForName;
     }
 
-    public function getBatchOrderID(): string
+    public function getBatchOrderID()
     {
         return $this->batchOrderID;
     }
@@ -269,7 +269,7 @@ class OrderEntity
         $this->batchOrderID = $batchOrderID;
     }
 
-    public function getCreationDate(): string
+    public function getCreationDate()
     {
         return $this->creationDate;
     }
@@ -279,7 +279,7 @@ class OrderEntity
         $this->creationDate = $creationDate;
     }
 
-    public function getEarliestShipDate(): string
+    public function getEarliestShipDate()
     {
         return $this->earliestShipDate;
     }
@@ -289,7 +289,7 @@ class OrderEntity
         $this->earliestShipDate = $earliestShipDate;
     }
 
-    public function getShipCancelDate(): string
+    public function getShipCancelDate()
     {
         return $this->shipCancelDate;
     }
@@ -299,7 +299,7 @@ class OrderEntity
         $this->shipCancelDate = $shipCancelDate;
     }
 
-    public function getPickupDate(): string
+    public function getPickupDate()
     {
         return $this->pickupDate;
     }
@@ -309,7 +309,7 @@ class OrderEntity
         $this->pickupDate = $pickupDate;
     }
 
-    public function getCarrier(): string
+    public function getCarrier()
     {
         return $this->carrier;
     }
@@ -319,7 +319,7 @@ class OrderEntity
         $this->carrier = $carrier;
     }
 
-    public function getBillingCode(): string
+    public function getBillingCode()
     {
         return $this->billingCode;
     }
@@ -329,7 +329,7 @@ class OrderEntity
         $this->billingCode = $billingCode;
     }
 
-    public function getTotWeight(): string
+    public function getTotWeight()
     {
         return $this->totWeight;
     }
@@ -339,7 +339,7 @@ class OrderEntity
         $this->totWeight = $totWeight;
     }
 
-    public function getTotCuFt(): string
+    public function getTotCuFt()
     {
         return $this->totCuFt;
     }
@@ -349,7 +349,7 @@ class OrderEntity
         $this->totCuFt = $totCuFt;
     }
 
-    public function getTotPackages(): string
+    public function getTotPackages()
     {
         return $this->totPackages;
     }
@@ -359,7 +359,7 @@ class OrderEntity
         $this->totPackages = $totPackages;
     }
 
-    public function getTotOrdQty(): string
+    public function getTotOrdQty()
     {
         return $this->totOrdQty;
     }
@@ -369,7 +369,7 @@ class OrderEntity
         $this->totOrdQty = $totOrdQty;
     }
 
-    public function getTotLines(): string
+    public function getTotLines()
     {
         return $this->totLines;
     }
@@ -379,7 +379,7 @@ class OrderEntity
         $this->totLines = $totLines;
     }
 
-    public function getNotes(): string
+    public function getNotes()
     {
         return $this->notes;
     }
@@ -389,7 +389,7 @@ class OrderEntity
         $this->notes = $notes;
     }
 
-    public function getOverAllocated(): string
+    public function getOverAllocated()
     {
         return $this->overAllocated;
     }
@@ -399,7 +399,7 @@ class OrderEntity
         $this->overAllocated = $overAllocated;
     }
 
-    public function getPickTicketPrintDate(): string
+    public function getPickTicketPrintDate()
     {
         return $this->pickTicketPrintDate;
     }
@@ -409,7 +409,7 @@ class OrderEntity
         $this->pickTicketPrintDate = $pickTicketPrintDate;
     }
 
-    public function getProcessDate(): string
+    public function getProcessDate()
     {
         return $this->processDate;
     }
@@ -419,7 +419,7 @@ class OrderEntity
         $this->processDate = $processDate;
     }
 
-    public function getTrackingNumber(): string
+    public function getTrackingNumber()
     {
         return $this->trackingNumber;
     }
@@ -429,7 +429,7 @@ class OrderEntity
         $this->trackingNumber = $trackingNumber;
     }
 
-    public function getLoadNumber(): string
+    public function getLoadNumber()
     {
         return $this->loadNumber;
     }
@@ -439,7 +439,7 @@ class OrderEntity
         $this->loadNumber = $loadNumber;
     }
 
-    public function getBillOfLading(): string
+    public function getBillOfLading()
     {
         return $this->billOfLading;
     }
@@ -449,7 +449,7 @@ class OrderEntity
         $this->billOfLading = $billOfLading;
     }
 
-    public function getMasterBillOfLading(): string
+    public function getMasterBillOfLading()
     {
         return $this->masterBillOfLading;
     }
@@ -459,7 +459,7 @@ class OrderEntity
         $this->masterBillOfLading = $masterBillOfLading;
     }
 
-    public function getASNSentDate(): string
+    public function getASNSentDate()
     {
         return $this->aSNSentDate;
     }
@@ -469,7 +469,7 @@ class OrderEntity
         $this->aSNSentDate = $aSNSentDate;
     }
 
-    public function getConfirmASNSentDate(): string
+    public function getConfirmASNSentDate()
     {
         return $this->confirmASNSentDate;
     }
@@ -479,7 +479,7 @@ class OrderEntity
         $this->confirmASNSentDate = $confirmASNSentDate;
     }
 
-    public function getRememberRowInfo(): string
+    public function getRememberRowInfo()
     {
         return $this->rememberRowInfo;
     }
