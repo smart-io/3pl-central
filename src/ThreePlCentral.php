@@ -22,7 +22,7 @@ class ThreePlCentral
         $this->password = $password;
     }
 
-    public function findOrders(DateTime $beginDate, DateTime $endDate): array
+    public function findOrders(DateTime $beginDate, DateTime $endDate)
     {
         return OrderRepository::findOrders($this, $beginDate, $endDate);
     }
