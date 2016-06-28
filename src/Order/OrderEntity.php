@@ -49,6 +49,56 @@ class OrderEntity
     private $confirmASNSentDate;
     private $rememberRowInfo;
 
+    public function toArray(): array
+    {
+        return [
+            'customerName' => $this->customerName,
+            'customerEmail' => $this->customerEmail,
+            'customerPhone' => $this->customerPhone,
+            'facility' => $this->facility,
+            'facilityID' => $this->facilityID,
+            'warehouseTransactionID' => $this->warehouseTransactionID,
+            'referenceNum' => $this->referenceNum,
+            'pONum' => $this->pONum,
+            'retailer' => $this->retailer,
+            'shipToCompanyName' => $this->shipToCompanyName,
+            'shipToName' => $this->shipToName,
+            'shipToEmail' => $this->shipToEmail,
+            'shipToPhone' => $this->shipToPhone,
+            'shipToAddress1' => $this->shipToAddress1,
+            'shipToAddress2' => $this->shipToAddress2,
+            'shipToCity' => $this->shipToCity,
+            'shipToState' => $this->shipToState,
+            'shipToZip' => $this->shipToZip,
+            'shipToCountry' => $this->shipToCountry,
+            'shipMethod' => $this->shipMethod,
+            'markForName' => $this->markForName,
+            'batchOrderID' => $this->batchOrderID,
+            'creationDate' => $this->creationDate,
+            'earliestShipDate' => $this->earliestShipDate,
+            'shipCancelDate' => $this->shipCancelDate,
+            'pickupDate' => $this->pickupDate,
+            'carrier' => $this->carrier,
+            'billingCode' => $this->billingCode,
+            'totWeight' => $this->totWeight,
+            'totCuFt' => $this->totCuFt,
+            'totPackages' => $this->totPackages,
+            'totOrdQty' => $this->totOrdQty,
+            'totLines' => $this->totLines,
+            'notes' => $this->notes,
+            'overAllocated' => $this->overAllocated,
+            'pickTicketPrintDate' => $this->pickTicketPrintDate,
+            'processDate' => $this->processDate,
+            'trackingNumber' => $this->trackingNumber,
+            'loadNumber' => $this->loadNumber,
+            'billOfLading' => $this->billOfLading,
+            'masterBillOfLading' => $this->masterBillOfLading,
+            'aSNSentDate' => $this->aSNSentDate,
+            'confirmASNSentDate' => $this->confirmASNSentDate,
+            'rememberRowInfo' => $this->rememberRowInfo
+        ];
+    }
+
     public function getCustomerName()
     {
         return $this->customerName;
