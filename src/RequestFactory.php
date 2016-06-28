@@ -6,12 +6,12 @@ class RequestFactory
 {
     private static $class = Request::class;
 
-    public static function set(string $class)
+    public static function set($class)
     {
         self::$class = $class;
     }
 
-    public static function create(ThreePlCentral $threepl, string $method, string $url): RequestInterface
+    public static function create(ThreePlCentral $threepl, $method, $url)
     {
         $classname = self::$class;
         $instance = new $classname($method, $url);

@@ -4,17 +4,17 @@ namespace ThreePlCentral;
 
 interface RequestInterface
 {
-    public function __construct(string $method, string $body);
-    public function fetch(array $data): ResponseInterface;
-    public function setTemplate(string $template);
-    public function getId(): string;
-    public function setId(string $id);
-    public function getCustomerId(): string;
-    public function setCustomerId(string $customerId);
-    public function getFacilityId(): string;
-    public function setFacilityId(string $facilityId);
-    public function getLogin(): string;
-    public function setLogin(string $login);
-    public function getPassword(): string;
-    public function setPassword(string $password);
+    public function __construct($method, $body);
+    public function fetch(array $data);
+    public function setTemplate($template);
+    public function getId();
+    public function setId($id);
+    public function getCustomerId();
+    public function setCustomerId($customerId);
+    public function getFacilityId();
+    public function setFacilityId($facilityId);
+    public function getLogin();
+    public function setLogin($login);
+    public function getPassword();
+    public function setPassword($password);
 }

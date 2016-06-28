@@ -15,12 +15,12 @@ class Response implements \ThreePlCentral\ResponseInterface
         $this->response = $response;
     }
 
-    public function body(): string
+    public function body()
     {
         return (string) $this->response->getBody();
     }
 
-    public function json(): array
+    public function json()
     {
         $body = $this->body();
         $xml = new DOMDocument("1.0", "ISO-8859-15");
@@ -49,7 +49,7 @@ class Response implements \ThreePlCentral\ResponseInterface
         return [];
     }
 
-    private function parseXmlContent(string $xml)
+    private function parseXmlContent($xml)
     {
         $xml = trim($xml);
         if (strncmp($xml, '<', 1) !== 0) {

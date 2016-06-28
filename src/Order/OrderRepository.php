@@ -8,7 +8,7 @@ use ThreePlCentral\RequestFactory;
 
 class OrderRepository
 {
-    public static function findOrders(ThreePlCentral $threepl, DateTime $beginDate, DateTime $endDate): array
+    public static function findOrders(ThreePlCentral $threepl, DateTime $beginDate, DateTime $endDate)
     {
         $request = RequestFactory::create(
             $threepl,

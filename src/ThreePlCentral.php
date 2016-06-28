@@ -13,7 +13,7 @@ class ThreePlCentral
     private $login;
     private $password;
 
-    public function __construct(string $id, string $customerId, string $facilityId, string $login, string $password)
+    public function __construct($id, $customerId, $facilityId, $login, $password)
     {
         $this->id = $id;
         $this->customerId = $customerId;
@@ -27,52 +27,52 @@ class ThreePlCentral
         return OrderRepository::findOrders($this, $beginDate, $endDate);
     }
 
-    public function getId(): string
+    public function getId()
     {
         return $this->id;
     }
 
-    public function setId(string $id)
+    public function setId($id)
     {
         $this->id = $id;
     }
 
-    public function getCustomerId(): string
+    public function getCustomerId()
     {
         return $this->customerId;
     }
 
-    public function setCustomerId(string $customerId)
+    public function setCustomerId($customerId)
     {
         $this->customerId = $customerId;
     }
 
-    public function getFacilityId(): string
+    public function getFacilityId()
     {
         return $this->facilityId;
     }
 
-    public function setFacilityId(string $facilityId)
+    public function setFacilityId($facilityId)
     {
         $this->facilityId = $facilityId;
     }
 
-    public function getLogin(): string
+    public function getLogin()
     {
         return $this->login;
     }
 
-    public function setLogin(string $login)
+    public function setLogin($login)
     {
         $this->login = $login;
     }
 
-    public function getPassword(): string
+    public function getPassword()
     {
         return $this->password;
     }
 
-    public function setPassword(string $password)
+    public function setPassword($password)
     {
         $this->password = $password;
     }

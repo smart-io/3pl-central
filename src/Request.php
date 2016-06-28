@@ -16,13 +16,13 @@ class Request implements RequestInterface
     private $url;
     private $template;
 
-    public function __construct(string $method, string $url)
+    public function __construct($method, $url)
     {
         $this->method = $method;
         $this->url = $url;
     }
 
-    public function fetch(array $data): ResponseInterface
+    public function fetch(array $data)
     {
         $client = new Client();
         $request = new Psr7\Request(
@@ -45,7 +45,7 @@ class Request implements RequestInterface
         return new Response($reponse);
     }
 
-    private function getBody(array $data): string
+    private function getBody(array $data)
     {
         $content = file_get_contents($this->template);
 
@@ -64,62 +64,62 @@ class Request implements RequestInterface
         return $content;
     }
 
-    public function setTemplate(string $template)
+    public function setTemplate($template)
     {
         $this->template = $template;
     }
 
-    public function getId(): string
+    public function getId()
     {
         return $this->id;
     }
 
-    public function setId(string $id)
+    public function setId($id)
     {
         $this->id = $id;
     }
 
-    public function getCustomerId(): string
+    public function getCustomerId()
     {
         return $this->customerId;
     }
 
-    public function setCustomerId(string $customerId)
+    public function setCustomerId($customerId)
     {
         $this->customerId = $customerId;
     }
 
-    public function getFacilityId(): string
+    public function getFacilityId()
     {
         return $this->facilityId;
     }
 
-    public function setFacilityId(string $facilityId)
+    public function setFacilityId($facilityId)
     {
         $this->facilityId = $facilityId;
     }
 
-    public function getLogin(): string
+    public function getLogin()
     {
         return $this->login;
     }
 
-    public function setLogin(string $login)
+    public function setLogin($login)
     {
         $this->login = $login;
     }
 
-    public function getPassword(): string
+    public function getPassword()
     {
         return $this->password;
     }
 
-    public function setPassword(string $password)
+    public function setPassword($password)
     {
         $this->password = $password;
     }
 
-    public function getUrl(): string
+    public function getUrl()
     {
         return $this->url;
     }

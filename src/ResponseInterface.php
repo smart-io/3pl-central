@@ -4,6 +4,6 @@ namespace ThreePlCentral;
 
 interface ResponseInterface
 {
-    public function body(): string;
-    public function json(): array;
+    public function body();
+    public function json();
 }

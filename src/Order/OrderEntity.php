@@ -49,7 +49,7 @@ class OrderEntity
     private $confirmASNSentDate;
     private $rememberRowInfo;
 
-    public function toArray(): array
+    public function toArray()
     {
         return [
             'customerName' => $this->customerName,
@@ -104,7 +104,7 @@ class OrderEntity
         return $this->customerName;
     }
 
-    public function setCustomerName(string $customerName)
+    public function setCustomerName($customerName)
     {
         $this->customerName = $customerName;
     }
@@ -114,7 +114,7 @@ class OrderEntity
         return $this->customerEmail;
     }
 
-    public function setCustomerEmail(string $customerEmail)
+    public function setCustomerEmail($customerEmail)
     {
         $this->customerEmail = $customerEmail;
     }
@@ -124,7 +124,7 @@ class OrderEntity
         return $this->customerPhone;
     }
 
-    public function setCustomerPhone(string $customerPhone)
+    public function setCustomerPhone($customerPhone)
     {
         $this->customerPhone = $customerPhone;
     }
@@ -134,7 +134,7 @@ class OrderEntity
         return $this->facility;
     }
 
-    public function setFacility(string $facility)
+    public function setFacility($facility)
     {
         $this->facility = $facility;
     }
@@ -144,7 +144,7 @@ class OrderEntity
         return $this->facilityID;
     }
 
-    public function setFacilityID(string $facilityID)
+    public function setFacilityID($facilityID)
     {
         $this->facilityID = $facilityID;
     }
@@ -154,7 +154,7 @@ class OrderEntity
         return $this->warehouseTransactionID;
     }
 
-    public function setWarehouseTransactionID(string $warehouseTransactionID)
+    public function setWarehouseTransactionID($warehouseTransactionID)
     {
         $this->warehouseTransactionID = $warehouseTransactionID;
     }
@@ -164,7 +164,7 @@ class OrderEntity
         return $this->referenceNum;
     }
 
-    public function setReferenceNum(string $referenceNum)
+    public function setReferenceNum($referenceNum)
     {
         $this->referenceNum = $referenceNum;
     }
@@ -174,7 +174,7 @@ class OrderEntity
         return $this->pONum;
     }
 
-    public function setPONum(string $pONum)
+    public function setPONum($pONum)
     {
         $this->pONum = $pONum;
     }
@@ -184,7 +184,7 @@ class OrderEntity
         return $this->retailer;
     }
 
-    public function setRetailer(string $retailer)
+    public function setRetailer($retailer)
     {
         $this->retailer = $retailer;
     }
@@ -194,7 +194,7 @@ class OrderEntity
         return $this->shipToCompanyName;
     }
 
-    public function setShipToCompanyName(string $shipToCompanyName)
+    public function setShipToCompanyName($shipToCompanyName)
     {
         $this->shipToCompanyName = $shipToCompanyName;
     }
@@ -204,7 +204,7 @@ class OrderEntity
         return $this->shipToName;
     }
 
-    public function setShipToName(string $shipToName)
+    public function setShipToName($shipToName)
     {
         $this->shipToName = $shipToName;
     }
@@ -214,7 +214,7 @@ class OrderEntity
         return $this->shipToEmail;
     }
 
-    public function setShipToEmail(string $shipToEmail)
+    public function setShipToEmail($shipToEmail)
     {
         $this->shipToEmail = $shipToEmail;
     }
@@ -224,7 +224,7 @@ class OrderEntity
         return $this->shipToPhone;
     }
 
-    public function setShipToPhone(string $shipToPhone)
+    public function setShipToPhone($shipToPhone)
     {
         $this->shipToPhone = $shipToPhone;
     }
@@ -234,7 +234,7 @@ class OrderEntity
         return $this->shipToAddress1;
     }
 
-    public function setShipToAddress1(string $shipToAddress1)
+    public function setShipToAddress1($shipToAddress1)
     {
         $this->shipToAddress1 = $shipToAddress1;
     }
@@ -244,7 +244,7 @@ class OrderEntity
         return $this->shipToAddress2;
     }
 
-    public function setShipToAddress2(string $shipToAddress2)
+    public function setShipToAddress2($shipToAddress2)
     {
         $this->shipToAddress2 = $shipToAddress2;
     }
@@ -254,7 +254,7 @@ class OrderEntity
         return $this->shipToCity;
     }
 
-    public function setShipToCity(string $shipToCity)
+    public function setShipToCity($shipToCity)
     {
         $this->shipToCity = $shipToCity;
     }
@@ -264,7 +264,7 @@ class OrderEntity
         return $this->shipToState;
     }
 
-    public function setShipToState(string $shipToState)
+    public function setShipToState($shipToState)
     {
         $this->shipToState = $shipToState;
     }
@@ -274,7 +274,7 @@ class OrderEntity
         return $this->shipToZip;
     }
 
-    public function setShipToZip(string $shipToZip)
+    public function setShipToZip($shipToZip)
     {
         $this->shipToZip = $shipToZip;
     }
@@ -284,7 +284,7 @@ class OrderEntity
         return $this->shipToCountry;
     }
 
-    public function setShipToCountry(string $shipToCountry)
+    public function setShipToCountry($shipToCountry)
     {
         $this->shipToCountry = $shipToCountry;
     }
@@ -294,7 +294,7 @@ class OrderEntity
         return $this->shipMethod;
     }
 
-    public function setShipMethod(string $shipMethod)
+    public function setShipMethod($shipMethod)
     {
         $this->shipMethod = $shipMethod;
     }
@@ -304,7 +304,7 @@ class OrderEntity
         return $this->markForName;
     }
 
-    public function setMarkForName(string $markForName)
+    public function setMarkForName($markForName)
     {
         $this->markForName = $markForName;
     }
@@ -314,7 +314,7 @@ class OrderEntity
         return $this->batchOrderID;
     }
 
-    public function setBatchOrderID(string $batchOrderID)
+    public function setBatchOrderID($batchOrderID)
     {
         $this->batchOrderID = $batchOrderID;
     }
@@ -324,7 +324,7 @@ class OrderEntity
         return $this->creationDate;
     }
 
-    public function setCreationDate(string $creationDate)
+    public function setCreationDate($creationDate)
     {
         $this->creationDate = $creationDate;
     }
@@ -334,7 +334,7 @@ class OrderEntity
         return $this->earliestShipDate;
     }
 
-    public function setEarliestShipDate(string $earliestShipDate)
+    public function setEarliestShipDate($earliestShipDate)
     {
         $this->earliestShipDate = $earliestShipDate;
     }
@@ -344,7 +344,7 @@ class OrderEntity
         return $this->shipCancelDate;
     }
 
-    public function setShipCancelDate(string $shipCancelDate)
+    public function setShipCancelDate($shipCancelDate)
     {
         $this->shipCancelDate = $shipCancelDate;
     }
@@ -354,7 +354,7 @@ class OrderEntity
         return $this->pickupDate;
     }
 
-    public function setPickupDate(string $pickupDate)
+    public function setPickupDate($pickupDate)
     {
         $this->pickupDate = $pickupDate;
     }
@@ -364,7 +364,7 @@ class OrderEntity
         return $this->carrier;
     }
 
-    public function setCarrier(string $carrier)
+    public function setCarrier($carrier)
     {
         $this->carrier = $carrier;
     }
@@ -374,7 +374,7 @@ class OrderEntity
         return $this->billingCode;
     }
 
-    public function setBillingCode(string $billingCode)
+    public function setBillingCode($billingCode)
     {
         $this->billingCode = $billingCode;
     }
@@ -384,7 +384,7 @@ class OrderEntity
         return $this->totWeight;
     }
 
-    public function setTotWeight(string $totWeight)
+    public function setTotWeight($totWeight)
     {
         $this->totWeight = $totWeight;
     }
@@ -394,7 +394,7 @@ class OrderEntity
         return $this->totCuFt;
     }
 
-    public function setTotCuFt(string $totCuFt)
+    public function setTotCuFt($totCuFt)
     {
         $this->totCuFt = $totCuFt;
     }
@@ -404,7 +404,7 @@ class OrderEntity
         return $this->totPackages;
     }
 
-    public function setTotPackages(string $totPackages)
+    public function setTotPackages($totPackages)
     {
         $this->totPackages = $totPackages;
     }
@@ -414,7 +414,7 @@ class OrderEntity
         return $this->totOrdQty;
     }
 
-    public function setTotOrdQty(string $totOrdQty)
+    public function setTotOrdQty($totOrdQty)
     {
         $this->totOrdQty = $totOrdQty;
     }
@@ -424,7 +424,7 @@ class OrderEntity
         return $this->totLines;
     }
 
-    public function setTotLines(string $totLines)
+    public function setTotLines($totLines)
     {
         $this->totLines = $totLines;
     }
@@ -434,7 +434,7 @@ class OrderEntity
         return $this->notes;
     }
 
-    public function setNotes(string $notes)
+    public function setNotes($notes)
     {
         $this->notes = $notes;
     }
@@ -444,7 +444,7 @@ class OrderEntity
         return $this->overAllocated;
     }
 
-    public function setOverAllocated(string $overAllocated)
+    public function setOverAllocated($overAllocated)
     {
         $this->overAllocated = $overAllocated;
     }
@@ -454,7 +454,7 @@ class OrderEntity
         return $this->pickTicketPrintDate;
     }
 
-    public function setPickTicketPrintDate(string $pickTicketPrintDate)
+    public function setPickTicketPrintDate($pickTicketPrintDate)
     {
         $this->pickTicketPrintDate = $pickTicketPrintDate;
     }
@@ -464,7 +464,7 @@ class OrderEntity
         return $this->processDate;
     }
 
-    public function setProcessDate(string $processDate)
+    public function setProcessDate($processDate)
     {
         $this->processDate = $processDate;
     }
@@ -474,7 +474,7 @@ class OrderEntity
         return $this->trackingNumber;
     }
 
-    public function setTrackingNumber(string $trackingNumber)
+    public function setTrackingNumber($trackingNumber)
     {
         $this->trackingNumber = $trackingNumber;
     }
@@ -484,7 +484,7 @@ class OrderEntity
         return $this->loadNumber;
     }
 
-    public function setLoadNumber(string $loadNumber)
+    public function setLoadNumber($loadNumber)
     {
         $this->loadNumber = $loadNumber;
     }
@@ -494,7 +494,7 @@ class OrderEntity
         return $this->billOfLading;
     }
 
-    public function setBillOfLading(string $billOfLading)
+    public function setBillOfLading($billOfLading)
     {
         $this->billOfLading = $billOfLading;
     }
@@ -504,7 +504,7 @@ class OrderEntity
         return $this->masterBillOfLading;
     }
 
-    public function setMasterBillOfLading(string $masterBillOfLading)
+    public function setMasterBillOfLading($masterBillOfLading)
     {
         $this->masterBillOfLading = $masterBillOfLading;
     }
@@ -514,7 +514,7 @@ class OrderEntity
         return $this->aSNSentDate;
     }
 
-    public function setASNSentDate(string $aSNSentDate)
+    public function setASNSentDate($aSNSentDate)
     {
         $this->aSNSentDate = $aSNSentDate;
     }
@@ -524,7 +524,7 @@ class OrderEntity
         return $this->confirmASNSentDate;
     }
 
-    public function setConfirmASNSentDate(string $confirmASNSentDate)
+    public function setConfirmASNSentDate($confirmASNSentDate)
     {
         $this->confirmASNSentDate = $confirmASNSentDate;
     }
@@ -534,7 +534,7 @@ class OrderEntity
         return $this->rememberRowInfo;
     }
 
-    public function setRememberRowInfo(string $rememberRowInfo)
+    public function setRememberRowInfo($rememberRowInfo)
     {
         $this->rememberRowInfo = $rememberRowInfo;
     }
