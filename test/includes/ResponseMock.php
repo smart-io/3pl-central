@@ -8,12 +8,12 @@ class ResponseMock extends Response
 {
     private $body;
 
-    public function __construct(string $body)
+    public function __construct($body)
     {
         $this->body = $body;
     }
 
-    public function body(): string
+    public function body()
     {
         return $this->body;
     }
